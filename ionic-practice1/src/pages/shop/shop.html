@@ -1,0 +1,14 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title>Shop</ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+    <!--传入是object, 相当于打包好的data-->
+    <button ion-button (click)="goToBuyout({name: 'Apples', quantity: 20})">Apple</button>
+    <hr>
+    <button ion-button (click)="goToBuyout({name: 'Milk', quantity: 30})">Milk</button>
+    <hr>
+    <button ion-button (click)="goToBuyout({name: 'Bread', quantity: 10})">Bread</button>
+</ion-content>

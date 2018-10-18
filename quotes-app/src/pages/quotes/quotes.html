@@ -1,0 +1,48 @@
+
+<ion-header>
+
+  <ion-navbar>
+    <!-- 有种方法是一定要添加 ？ -->
+    <!-- This tells Angular2 only to access category, if quoteGroup is available -->
+    <!-- 显示List中的 each item -->
+    <ion-title>{{ quoteGroup.category | uppercase}}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <!-- *ngFor -> loop each of quotes and assign it to a sinal quote variable-->
+  <ion-card *ngFor="let quote of quoteGroup.quotes; let i = index">
+    <ion-card-header>
+      #{{ i + 1 }}
+    </ion-card-header>
+    <ion-card-content>
+      <p>{{ quote.text }}</p>
+      <!-- import .scss , 自定义样式-->
+      <p class="author">{{ quote.person }}</p>
+    </ion-card-content>
+    <ion-row>
+      <ion-col text-right>
+        <!-- 设置button各种参数，改变外观 -->
+        <!-- *ngIf => 如果是favorate, 就显示Favorite button -->
+        <!--          反之，显示Unfavorate button -->
+        <button
+          ion-button
+          clear
+          small
+          (click)="onAddToFavorites(quote)"
+          *ngIf="!isFavorite(quote)">Favorite</button>
+
+        <button 
+          ion-button
+          clear
+          small
+          color="danger"
+          (click)="onRemoveFromFavorites(quote)"
+          *ngIf="isFavorite(quote)">Unfavorite</button>
+      </ion-col>
+    </ion-row>
+  </ion-card>
+
+</ion-content>

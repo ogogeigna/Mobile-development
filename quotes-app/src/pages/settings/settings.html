@@ -1,0 +1,38 @@
+
+<ion-header>
+
+  <ion-navbar>
+      <ion-buttons start>
+          <button ion-button menuToggle>
+            <ion-icon name="menu"></ion-icon>
+          </button>
+      </ion-buttons>
+
+    <ion-title>Settings</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-label>Alternative Background</ion-label>
+      </ion-col>
+
+      <ion-col>
+        <ion-toggle 
+          (ionChange)="onToggle($event)"
+          [checked]="checkAltBackground()" ></ion-toggle>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+</ion-content>
+
+
+<!-- (ionChange) is fired whenever we change the toggle -->
+<!-- What will happen after changing the toggle? => onToggle() , pass the event object-->
+<!-- [checked] makes sure we always set the toggle to the currently stored state to state stored in the service -->

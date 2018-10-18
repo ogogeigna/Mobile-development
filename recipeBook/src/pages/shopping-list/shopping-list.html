@@ -1,0 +1,82 @@
+
+<ion-header>
+
+  <ion-navbar>
+
+    <ion-buttons start>
+      <button ion-button icon-only menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+    </ion-buttons>
+
+    <!-- ($event): The automatically created JS Event Object -->
+    <ion-buttons end>
+      <button ion-button icon-only (click)="onShowOptions($event)">
+        <ion-icon name="more"></ion-icon>
+      </button>
+    </ion-buttons>
+
+    <ion-title>Shopping List</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <!-- local reference: f, refers to the form -->
+  <!-- (ngSubmit) directive: has this event ear on it,  -->
+  <!-- to listens to the submission of this form and executes a method, and pass the form to the method -->
+  <form #f="ngForm" (ngSubmit)="onAddItem(f)" >
+      <ion-list>
+          <ion-item>
+            <ion-label fixed>Name</ion-label>
+            <!-- 前三行three attributes, 就可以成功被angular2识别为一个 form element -->
+            <ion-input 
+              type="text" 
+              name="ingredientName" 
+              placeholder="Milk"
+
+              ngModel
+
+              required></ion-input>
+          </ion-item>
+
+<!-- required: means empty input is not allowed -->
+<!-- 用ngModel告诉Angular2 this actually works as a control for it -->
+<!-- ngModel 在 Ionic中自动被registered， 而在Angular需要手动去import添加 -->
+<!-- Very important thing is to make sure you have name="" attribute set, otherwise engine is not able to assign a name to this control in its JS representation of this form. -->
+<!-- 其实也可以用[ngModel]? -->
+
+          <ion-item>
+            <ion-label fixed>Amount</ion-label>
+            <ion-input 
+              type="number" 
+              name="amount" 
+              placeholder="2"
+
+              ngModel
+
+              required></ion-input>
+          </ion-item>
+        </ion-list>
+
+<!-- [disabled]="!f.valid"： means 只有在form有效时候，button才可以点击 -->
+        <button 
+          ion-button 
+          type="submit" 
+          block
+          [disabled]="!f.valid">Add Item</button>
+  </form>
+ 
+  <!-- TODO: 将加进去的ingredients信息（name and amount)都在下面以list显示出来 -->
+  <!-- item -> ingredients, listItems => 目前还没有，一会再去ts建立 -->
+  <!-- *ngFor => 循环 -->
+  <!-- 因为我们也想要output the amount right, (amount)形式显示出来 -->
+  <ion-list>
+    <ion-item *ngFor="let item of listItems; let i = index" (click)="onCheckItem()" >
+      <h3>{{ item.name }} ({{ item.amount }}) </h3>
+    </ion-item>
+  </ion-list>
+
+</ion-content>

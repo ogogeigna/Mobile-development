@@ -1,0 +1,84 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Ionic Blank
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+<app-touch-event></app-touch-event>
+
+  <!-- we can add many different gestures -->
+
+
+  <ion-grid>
+    <ion-row>
+      <!-- 在scss 中设置样式了  -->
+      <ion-col col-3>A column</ion-col>
+      <ion-col>A second column</ion-col>
+    </ion-row>
+    
+    <ion-row>
+        <!-- 在scss 中设置样式了  -->
+        <ion-col offset-3>A column</ion-col>
+      </ion-row>
+
+  </ion-grid>
+
+  <button 
+    (click)="onClick()"
+    ion-button
+    color="secondary"
+  >A normal button</button>
+
+  <button 
+    (click)="onClick()"
+    ion-button
+    block
+    icon-left
+  >
+    <ion-icon name="home"></ion-icon>
+    Home
+  </button>
+
+  <ion-list no-lines inset>
+    <ion-item>
+      <ion-icon name="star" item-right></ion-icon>
+      <h5>Heading</h5>
+      <p>item</p>
+    </ion-item>
+    <button ion-item>A button item</button>
+  </ion-list>
+  
+  <ion-item-group>
+    <ion-item-divider>A</ion-item-divider>
+    <ion-item>Apples</ion-item>
+    <ion-item>Avocados</ion-item>
+    <ion-item-divider>B</ion-item-divider>
+    <ion-item>Bananas</ion-item>
+    <ion-item>Berries</ion-item>
+  </ion-item-group>
+
+  <ion-list>
+    <ion-list-header>Privacy</ion-list-header>
+    <ion-item>Tracking</ion-item>
+    <ion-item>Personal Images</ion-item>
+  </ion-list>
+
+  <ion-list>
+    <ion-list-header>Sharing</ion-list-header>
+    <ion-item>With anyone</ion-item>
+    <ion-item>None</ion-item>
+  </ion-list>
+
+
+  <ion-list reorder="true" (ionItemReorder)="reorderItems($event)">
+    <ion-item *ngFor="let item of items">{{ item }}</ion-item>
+  </ion-list>
+
+</ion-content>
+
+
+
+<!-- reorderable list -> items are dragable -->

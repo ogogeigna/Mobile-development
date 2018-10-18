@@ -1,0 +1,63 @@
+
+<!-- TDOO: Implement the side menu -->
+<!-- We need [content] which we need to bind -->
+<ion-menu [content]="nav">
+
+    <ion-header>
+        <ion-toolbar>
+            <ion-title>Menu</ion-title>
+        </ion-toolbar>
+    </ion-header>
+
+    <ion-content>
+        <!-- 可以用其他layout like grid -->
+        <ion-list>
+            <!-- 要跳转的pages, 4 pages totally. Dont forget to inject pages into app.module -->
+            <button 
+                ion-item
+                icon-left
+                (click)="onLoad(rootPage)"
+                *ngIf="isAuthentificated">
+
+                <ion-icon name="book"></ion-icon>
+                Recipe Book
+            </button>
+
+            <button 
+                ion-item
+                icon-left
+                (click)="onLogout()"
+                *ngIf="isAuthentificated">
+<!-- 这是 left menu 要出现的 -->
+
+                <ion-icon name="log-out"></ion-icon>
+                Logout
+            </button>
+
+            <button 
+                ion-item
+                icon-left
+                (click)="onLoad(signinPage)"
+                *ngIf="!isAuthentificated">
+                
+                <ion-icon name="log-in"></ion-icon>
+                Signin
+            </button>
+
+            <button 
+                ion-item
+                icon-left
+                (click)="onLoad(signupPage)"
+                *ngIf="!isAuthentificated">
+                
+                <ion-icon name="person"></ion-icon>
+                Signup
+            </button>
+
+        </ion-list>
+    </ion-content>
+</ion-menu>
+
+
+<!-- reference -> nav which we pass to the menu [content] -->
+<ion-nav [root]="rootPage" #nav></ion-nav>

@@ -1,0 +1,32 @@
+
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>{{ person }}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-card padding>
+    <ion-card-content>
+      {{ text }}
+    </ion-card-content>
+    <ion-row>
+      <ion-col>
+        <!-- can use any color found in the theme folder, variables.scss-->
+        <!-- you may use color on any HDML element to change its color -->
+        <button 
+          ion-button
+          small
+          outline
+          color="danger"
+          (click)="onClose(true)">Unfavorite</button>
+      </ion-col>
+    </ion-row>
+  </ion-card>
+  <button ion-button color="danger" (click)="onClose()">Close</button>
+</ion-content>
+
+<!-- 两个 onClose（）, 一个传参，一个没传 -->

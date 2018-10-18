@@ -1,0 +1,17 @@
+// set up own style
+// .author => 相当于 selector
+
+page-quotes {
+    .author {
+        color: #ccc;
+        text-align: right;
+        text-transform: uppercase;
+        margin: 0;
+        padding: 0;
+
+        // add a leading dash before 
+        &:before {
+            content:'- ';
+        }
+    }
+}

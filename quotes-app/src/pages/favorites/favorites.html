@@ -1,0 +1,62 @@
+
+<ion-header>
+
+  <ion-navbar>
+    <!-- start/end 控制menu那个icon在左还是右 -->
+    <!-- ion-buttons is used to group the buttons in the navbar -->
+    <!-- menuToggle allows us to toggle our menu to open or close it, instead of using MenuController -->
+    <!-- 在这里的menu用法跟documents中还有区别 -->
+    <ion-buttons start>
+      <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+    </ion-buttons>
+
+    <ion-title>Favorite Quote</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-list>
+    <!-- ion-item-sliding wraps ion-item-->
+    <!-- 用了自定义的color -->
+    <ion-item-sliding>
+      <ion-item 
+
+        color="getBackground"
+        [ngClass]="{alt: isAltBackground()}"
+        
+        *ngFor="let quote of quotes"
+        (click)="onViewQuote(quote)">
+        <h2>{{ quote.person }}</h2>
+        <p>{{ quote.text }}</p>
+      </ion-item>
+
+      <!-- 在对ion-item划动时， 显示的options是ion-item-options里面内容 => Delete button-->
+      <ion-item-options>
+        <button ion-button 
+          color="danger"
+          (click)="onRemoveFromFavorites(quote)" >
+
+          <ion-icon name="trash"></ion-icon>
+          Delete
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+ 
+</ion-content>
+
+
+<!-- 两种方法设置背景转换都可以 -->
+
+<!-- Method1 -->
+  <!-- [color]="getBackground()", 不用scss file -->
+    <!-- [color] is property binding -->
+
+<!-- Mehtod2  use scss -->
+  <!-- color="getBackground" -->
+  <!-- [ngClass]="{alt: isAltBackground()}" -->
+
